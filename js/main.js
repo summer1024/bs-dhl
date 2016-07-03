@@ -68,8 +68,8 @@ define(function(require, exports, module){
                         dataType: 'json',
                         success: function(res){
                             if(res.status == 0){
+                                $el.parents('tr').find('td').eq(3).html("处理中");
                                 $el.text('处理中');
-                                $el.removeClass('loading');
                             }else{
                                 alert(res.messages);
                             }

@@ -17,10 +17,10 @@
     <div class="menu-wrapper">
         <ul class="catalog">
             <!--如果要提示符的话，请注意data-toggle，data-placement[方向]和title的用法-->
-            <li class="catalog-li normal">
+            <li class="catalog-li normal active">
                 <span><i class="glyphicon glyphicon-file"></i>数据源管理</span>
             </li>
-            <li class="catalog-li normal active">
+            <li class="catalog-li normal">
                 <span><i class="glyphicon glyphicon-file"></i>数据多级统计分析</span>
             </li>
             <!--可由data-toggle设置其类型是点击展开/折叠相应列表类型，注意data-target-->
@@ -150,11 +150,11 @@
                         <td>{{item.meaning}}</td>
                         <td>{{item.type}}</td>
                         <td>{{item.count}}</td>
-                        <td>{{item.max}}</td>
-                        <td>{{item.min}}</td>
-                        <td>{{item.avg}}</td>
-                        <td>{{item.std}}</td>
-                        <td>{{item.bias}}</td>
+                        <td>{{item.maxI}}</td>
+                        <td>{{item.minI}}</td>
+                        <td>{{item.avgI}}</td>
+                        <td>{{item.stdI}}</td>
+                        <td>{{item.biasI}}</td>
                     </tr>
                 {{/each}}
             </tbody>
