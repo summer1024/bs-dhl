@@ -39,7 +39,7 @@ body{
 .right{
     float: right;
 }
-header{
+.header{
     position: fixed;
     top: 0;
     left: 0;
@@ -231,10 +231,12 @@ header{
     line-height: 25px;
     height: 25px;
     padding: 0 10px;
+    border: none;
 }
 .btn-d-blue:active,.btn-d-blue:focus,.btn-d-blue:hover,.btn-d-blue:active:focus{
     outline:none;
     color: #FFF;
+    border: none;
 }
 .red{
     color: @red;
@@ -265,4 +267,25 @@ header{
 }
 .bg-orange{
     background-color: @orange;
+}
+.loading::after{
+    content: "";
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 16px;
+    height: 16px;
+    background: url(./img/loading.gif);
+    vertical-align: middle;
+    margin-left: 5px;
+}
+/*message box*/
+#mb_con{
+    position: absolute;
+    z-index: 999;
+    top: 100px;
+    width: 900px;
+    height: 600px;
+    overflow-x: scroll;
+    background: #FFF;
 }
