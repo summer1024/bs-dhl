@@ -1,0 +1,20 @@
+{
+    "status": 0,
+    "message": "请求成功",
+    "sources": [
+        {
+            "id": "0001",
+            "name": "我的数据源啊啊",
+            "uploadtime": "2016-11-10",
+            "size": "1024MB",
+            "status": "100"
+        },
+        {
+            "id": "0002",
+            "name": "这是第二个数据源啊啊啊",
+            "uploadtime": "2016-06-28",
+            "size": "24GB",
+            "status": "101"
+        }
+    ]
+}
