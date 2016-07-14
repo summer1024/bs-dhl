@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAD移动互联网用户行为分析系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href=" ../css/img/favicon.ico" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+    <div class="header clearfix">
+        <div class="logo"></div>
+        <!--标题写这里-->
+        <h1>CAD移动互联网用户行为分析系统</h1>
+    </div>
+    <div class="menu-wrapper">
+        <ul class="catalog">
+            <!--如果要提示符的话，请注意data-toggle，data-placement[方向]和title的用法-->
+            <li class="catalog-li normal">
+                <span><i class="glyphicon glyphicon-folder-open"></i><a href="data-source.html">数据源管理</a></span>
+            </li>
+            <li class="catalog-li normal">
+                <span><i class="glyphicon glyphicon-list-alt"></i><a href="multiData.html">数据多级统计分析</a></span>
+            </li>
+            <!--可由data-toggle设置其类型是点击展开/折叠相应列表类型，注意data-target-->
+            <li class="catalog-li" data-toggle="collapse"  data-target="#collapseOne">
+                <span><i class="glyphicon glyphicon-tasks"></i>数据挖掘</span>
+                <i class="absolute-down glyphicon glyphicon-chevron-down"></i>
+            </li>
+            <!--折叠列表即子列表，注意其id与data-target对应-->
+            <!--类里加in即为展开，不加in即为折叠-->
+            <ul class="panel-collapse collapse in collapse-ul" id="collapseOne">
+                <!--链接到相应子列表页面，可设置active类-->
+                <li class="collapse-li active"><a href="data-mining.html">聚类</a></li>
+                <li class="collapse-li"><a href="">分类</a></li>
+            </ul>
+            <li class="catalog-li normal">
+                <span><i class="glyphicon glyphicon-th-large"></i><a href="">用户流量分群分析</a></span>
+            </li>
+            <li class="catalog-li normal">
+                <span><i class="glyphicon glyphicon-record"></i><a href="">用户访问热点分析</a></span>
+            </li>
+        </ul>
+    </div>
+    <div class="footer">
+        Copyright © CAD大数据中心
+    </div>
+    <div class="main-content">
+        <!--你们的内容写在这里-->
+        <h3>数据挖掘</h3>
+        <hr>
+        <div class="c-div">
+            <div class="c-div-header">
+                聚类分析向导
+            </div>
+            <div class="c-div-content">
+                <ul class="label-ul">
+                    <li class="active">数据源选择<i></i></li>
+                    <li>聚类属性选择<i></i></li>
+                    <li>算法选择设置<i></i></li>
+                    <li>结果确认<i></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="c-div-no-border" id="tabsInMining">
+            <div class="c-div">
+                <div class="c-div-header">
+                    数据源选择
+                </div>
+                <div>
+                    <select name="" id="">
+                        <option value="">数据源选择</option>
+                    </select>
+                    <div class="button-group">
+                        <button class="btn btn-d-blue">下一步</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-div">
+            <div class="c-div-header">
+                聚类属性选择
+            </div>
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td><input type="checkbox">选择</td>
+                            <td>字段名称</td>
+                            <td>字段含义</td>
+                            <td>数据类型</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>脱敏后的imsi</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>开始访问时间</td>
+                            <td></td>
+                        </tr><tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>结束访问时间</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>下行报文数</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>上行报文数</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>下行流量</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>上行流量</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>应用类型</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>应用</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>客户端名称</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>主机名</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>域名</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td>终端信息</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-group">
+                    <button class="btn btn-d-blue">上一步</button>
+                    <button class="btn btn-d-blue">下一步</button>
+                </div>
+            </div>
+        </div>
+        <div class="c-div">
+            <div class="c-div-header">
+                算法选择设置
+            </div>
+            <div>
+                <div>
+                    <label for="">算法选择：</label>
+                    <select name="" id="">
+                        <option value="">算法选择</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">类别个数：</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="">迭代次数：</label>
+                    <input type="text">
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-d-blue">上一步</button>
+                    <button class="btn btn-d-blue">下一步</button>
+                </div>
+            </div>
+        </div>
+        <div class="c-div">
+            <div class="c-div-header">
+                结果分析
+            </div>
+            <div>
+                <table class="table table-striped" style="width: 200px;margin-top:20px;border: 1px solid #DDD">
+                    <thead>
+                        <tr>
+                            <td>类别</td>
+                            <td>记录数目</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>类别</td>
+                            <td>记录数目</td>
+                        </tr>
+                        <tr>
+                            <td>类别</td>
+                            <td>记录数目</td>
+                        </tr>
+                        <tr>
+                            <td>类别</td>
+                            <td>记录数目</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-group">
+                    <button class="btn btn-d-blue">上一步</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/html" id="table-multi">
+        <div class="outline left">
+            <ul class="outline-ul">
+                <li>
+                    <label>数据记录条数：</label>
+                    <span>{{count}}</span>
+                </li>
+                <li>
+                    <label>总用户量：</label>
+                    <span>{{userCount}}</span>
+                </li>
+                <li>
+                    <label>下行流量(GB)：</label>
+                    <span>{{downFlow}}</span>
+                </li>
+                <li>
+                    <label>上行流量(GB)：</label>
+                    <span>{{upFlow}}</span>
+                </li>
+                <li>
+                    <label>人均流量消耗：</label>
+                    <span>{{avgFlow}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="outline right">
+            <ul class="outline-ul">
+                <li>
+                    <label>统计时长(天)：</label>
+                    <span>{{duringTime}}</span>
+                </li>
+                <li>
+                    <label>平均上网时长(h)：</label>
+                    <span>{{avgOnline}}</span>
+                </li>
+                <li>
+                    <label>下行包数：</label>
+                    <span>{{downPackage}}</span>
+                </li>
+                <li>
+                    <label>上行包数：</label>
+                    <span>{{upPackage}}</span>
+                </li>
+                <li>
+                    <label>人均包数：</label>
+                    <span>{{avgPackage}}</span>
+                </li>
+            </ul>
+        </div>
+    </script>
+    <!--放在最下面，如要更改位置，请保持基本顺序不变-->
+    <script src="../js/sea.js"></script>
+    <script>
+        seajs.config({
+            alias: {
+                "jquery": "./jquery.min.js",
+                "bootstrap": "./bootstrap.min.js"
+            }
+        });
+        //这里更改接口路径 及相应的get/post方法
+        seajs.use('../js/multiData.js', function(multiData){
+            multiData.init({
+                getSummary: {
+                    url: '../json/getSummary.json',
+                    type: 'get'
+                }
+            });
+        });
+    </script>
+</body>
+</html>

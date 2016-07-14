@@ -1,0 +1,14 @@
+{
+    "status": 0,
+    "message":"结果详情",
+    "duringTime": "统计时长",
+    "count": "记录数",
+    "userCount": "用户量",
+    "avgOnline":"平均上网时长",
+    "upFlow":"上行流量",
+    "downFlow":"下行流量",
+    "avgFlow": "人均流量",
+    "upPackage": "上行包",
+    "downPackage": "下行包",
+    "avgPackage": "人均包"
+}
