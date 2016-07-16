@@ -17,7 +17,7 @@
     if (typeof define === 'function' ) {
         // using AMD; register as anon module
         define(function(require){
-            var $ = require('jquery');
+            window.$ = require('jquery');
             factory($);
         });
     } else {

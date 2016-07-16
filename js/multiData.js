@@ -4,7 +4,10 @@ define(function(require, exports, module){
     var bt = require('./template.js');
     require('./dialog.js');
     require('./jquery.form.js');
-
+    var menu = require('./menu.js');
+    //生成菜单 
+    menu.init('multiData');
+    
     var multiData = {
         init: function(options){
             var me = this;

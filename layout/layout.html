@@ -3,131 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>CAD移动互联网用户行为分析系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="shortcut icon" href=" ../css/img/favicon.ico" />
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
-    <header class="clearfix">
+    <div class="header clearfix">
         <div class="logo"></div>
         <!--标题写这里-->
         <h1>CAD移动互联网用户行为分析系统</h1>
-    </header>
-    <div class="menu-wrapper">
-        <ul class="catalog">
-            <!--如果要提示符的话，请注意data-toggle，data-placement[方向]和title的用法-->
-            <li class="catalog-li"  data-toggle="tooltip" data-placement="bottom" title="尚未开通哦~敬请期待">
-                <span><i class="glyphicon glyphicon-file"></i>显示提示符</span>
-            </li>
-            <!--可由data-toggle设置其类型是点击展开/折叠相应列表类型，注意data-target-->
-            <li class="catalog-li" data-toggle="collapse"  data-target="#collapseOne">
-                <span><i class="glyphicon glyphicon-adjust"></i>母列表展示</span>
-                <i class="absolute-down glyphicon glyphicon-chevron-up"></i>
-            </li>
-            <!--折叠列表即子列表，注意其id与data-target对应-->
-            <!--类里加in即为展开，不加in即为折叠-->
-            <ul class="panel-collapse collapse in collapse-ul" id="collapseOne">
-                <!--链接到相应子列表页面，可设置active类-->
-                <li class="collapse-li active"><a href="">子列表一</a></li>
-                <li class="collapse-li"><a href="">子列表二</a></li>
-            </ul>
-            <li class="catalog-li">
-                <span><i class="glyphicon glyphicon-cloud"></i>单个普通列表</span>
-            </li>
-        </ul>
     </div>
-    <div class="footer">
-        Copyright © CAD大数据中心
+    <div class="menu-wrapper">
+        
     </div>
     <div class="main-content">
         <!--你们的内容写在这里-->
-        <h3>图标问题</h3>
-        <hr>
-        <p>菜单中的图标为glyphicon图标，bootstrap自带图标</p>
-        <p>如果需要请到<a href="http://v3.bootcss.com/components/" target="_blank">这里</a>找到相应图标补充</p>
-        <p>或<a href="http://www.iconfont.cn/collections/show/317?spm=a313x.7781069.0.0.2MSOhd">这里</a>找到相应图标下载添加</p>
+        
 
-        <br>
-        <h3>色彩问题</h3>
-        <hr>
-        <p>CSS文件中定义五种颜色，相应颜色及类名分别为：</p>
-        <p><i class="bg-red" style="padding: 0 5px; margin-right: 10px;"></i>.red</p>
-        <p><i class="bg-dark-red" style="padding: 0 5px; margin-right: 10px;"></i>.dark-red</p>
-        <p><i class="bg-blue" style="padding: 0 5px; margin-right: 10px;"></i>.blue</p>
-        <p><i class="bg-dark-blue" style="padding: 0 5px; margin-right: 10px;"></i>.dark-blue</p>
-        <p><i class="bg-orange" style="padding: 0 5px; margin-right: 10px;"></i>.orange</p>
-        <p class="red">注意：如果需要将背景色设为相应颜色，则类名前加bg-（如bg-red、bg-dark-red），否则该类名定义字体颜色</p>
-        <br>
-        <h3>DIV样式</h3>
-        <hr>
-        <p>给出了几种DIV样式，由于使用的是bootsrap样式，所以如果需要定宽的话，可以参考bootstrap 12栅格布局，用col-md-*</p>
-        <h4>一行几栏DIV样式--需要多层嵌套，具体实现看代码</h4>
-        <div class="row col-wrapper">
-            <div class="col-md-8 col-left-30">
-                <div class="c-div">
-                    <div class="c-div-header">这是有border标题</div>
-
-                    左
-                </div>
-            </div>
-            <div class="col-md-4 col-left-30">
-                <div class="c-div">
-                    <div class="c-div-header-no">这是无border标题</div>
-                    右
-                </div>
-            </div>
-        </div>
-        <div class="row col-wrapper">
-            <div class="col-md-4 col-left-30">
-                <div class="c-div">
-                    <div class="c-div-header">这是有border标题</div>
-
-                    左
-                </div>
-            </div>
-            <div class="col-md-4 col-left-30">
-                <div class="c-div">
-                    <div class="c-div-header">这是有border标题</div>
-
-                    中
-                </div>
-            </div>
-            <div class="col-md-4 col-left-30">
-                <div class="c-div">
-                    <div class="c-div-header-no">这是无border标题</div>
-                    右
-                </div>
-            </div>
-        </div>
-
-        <h4>一行DIV样式--直接div class="c-div"</h4>
-        <div class="c-div">
-            这是一栏
-        </div>
-
-        <br>
-        <h3>按钮样式</h3>
-        <hr>
-        <p>用bootstrap的吧。。。。</p>
+        
     </div>
-
-
     <!--放在最下面，如要更改位置，请保持基本顺序不变-->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <!--页面script，列表折叠+提示符初始化-->
+    <script src="../js/sea.js"></script>
     <script>
-        $(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-            $('.catalog-li').click(function(e){
-                /*切换折叠指示图标*/
-                //console.log($(this));
-                if($(this).find('.absolute-down').hasClass('glyphicon-chevron-down')){
-                    $(this).find('.absolute-down').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-                }else{
-                    $(this).find('.absolute-down').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-                }
-            });
+        seajs.config({
+            alias: {
+                "jquery": "./jquery.min.js",
+                "bootstrap": "./bootstrap.min.js"
+            }
+        });
+        //这里更改接口路径 及相应的get/post方法
+        seajs.use('', function(){
+            
         });
     </script>
 </body>

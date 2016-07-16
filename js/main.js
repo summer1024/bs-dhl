@@ -4,11 +4,13 @@ define(function(require, exports, module){
     var bt = require('./template.js');
     require('./dialog.js');
     require('./jquery.form.js');
+    var menu = require('./menu.js');
+    //生成菜单 
+    menu.init('data-source');
 
     var source = {
         init: function(opt){
             var me = this;
-            me.boot();
             me.initTable(opt.listAllSources);
             //上传文件
             me.bindUpload(opt);
@@ -118,19 +120,6 @@ define(function(require, exports, module){
         },
         processData: function(data){
             $('.table').find('tbody').append(bt('data-source-table', data));
-        },
-        boot: function(){
-            //放置bootstrap相关JS
-            //显示提示框
-            $('[data-toggle="tooltip"]').tooltip();
-            $('.catalog-li').click(function(e){
-                /*切换折叠指示图标*/
-                if($(this).find('.absolute-down').hasClass('glyphicon-chevron-down')){
-                    $(this).find('.absolute-down').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-                }else{
-                    $(this).find('.absolute-down').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-                }
-            });
         }
     };
     module.exports = source;
