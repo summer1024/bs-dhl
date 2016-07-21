@@ -1,0 +1,38 @@
+{
+	"status": 0,
+	"message": "",
+	"jobs": [
+		{
+			"jobId": 700001,
+			"algName": "算法名称",
+			"para": "参数：参数名",
+			"submitDate": "2016-10-19",
+			"finishDate": "完成时间",
+			"status": 100
+		},
+		{
+			"jobId": 700002,
+			"algName": "算法名称2",
+			"para": "参数：参数名",
+			"submitDate": "2016-10-19",
+			"finishDate": "完成时间",
+			"status": 100
+		},
+		{
+			"jobId": 700003,
+			"algName": "算法名称3",
+			"para": "参数：参数名",
+			"submitDate": "2016-10-19",
+			"finishDate": "完成时间",
+			"status": 300
+		},
+		{
+			"jobId": 700004,
+			"algName": "算法名称4",
+			"para": "参数：参数名",
+			"submitDate": "2016-10-19",
+			"finishDate": "完成时间",
+			"status": 200
+		}
+	]
+}

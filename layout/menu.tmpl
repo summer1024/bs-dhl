@@ -10,9 +10,9 @@
         <span><i class="glyphicon glyphicon-tasks"></i>数据挖掘</span>
         <i class="absolute-down glyphicon glyphicon-chevron-down"></i>
     </li>
-    <ul class="panel-collapse collapse  {{if type == 'cluster' || type == 'category'}}in{{/if}} collapse-ul" id="collapseOne">
-        <li class="collapse-li  {{if type == 'cluster'}}active{{/if}}"><a href="cluster.html">聚类分析</a></li>
-        <li class="collapse-li  {{if type == 'category'}}active{{/if}}"><a href="category.html">分类分析</a></li>
+    <ul class="panel-collapse collapse  {{if type == 'cluster' || type == 'classify'}}in{{/if}} collapse-ul" id="collapseOne">
+        <li class="collapse-li  {{if type == 'cluster'}}active{{/if}}"><a href="cluster.html?type=cluster">聚类分析</a></li>
+        <li class="collapse-li  {{if type == 'classify'}}active{{/if}}"><a href="cluster.html?type=classify">分类分析</a></li>
     </ul>
     <li class="catalog-li normal  {{if type == 'traffic'}}active{{/if}}">
         <span><i class="glyphicon glyphicon-th-large"></i><a href="traffic.html">用户流量分群分析</a></span>

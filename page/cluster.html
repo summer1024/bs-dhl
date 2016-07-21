@@ -19,32 +19,184 @@
     </div>
     <div class="main-content">
         <!--你们的内容写在这里-->
-        <h3>数据挖掘</h3>
-        <hr>
-        <div class="c-div">
+        <div class="mining-content">
+            <h3>数据挖掘</h3>
+            <button id="viewHistory" class="btn btn-d-blue" style="position: absolute; right: 30px; top: 40px">查看历史消息</button>
+            <hr>
+            <div class="c-div" id="page-menu-wp">
+                
+            </div>
+            <div class="c-div-no-border" id="tabsInMining">
+                
+            </div>
+        </div>
+        <div class="history-content hide">
+            <h3>数据挖掘</h3>
+            <hr>
+            <div class="history-list-wp">
+                <div class="c-div">
+                    <table class="table table-striped" id="history-list-table">
+                        <thead>
+                            <tr>
+                                <td>任务ID</td>
+                                <td>算法名称</td>
+                                <td>参数</td>
+                                <td>提交时间</td>
+                                <td>完成时间</td>
+                                <td>状态</td>
+                                <td>分析结果</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="background: #FFF">历史记录暂无</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="history-detail-wp hide">
+                <button class="btn btn-d-blue return" style="margin-bottom: 30px">返回</button>
+                <div class="c-div">
+                    <div class="c-div-header">
+                        结果分析
+                    </div>
+                    <div class="c-div-content">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script type="text/html" id="history-list-tmpl">
+        {{each jobs as value i}}
+            <tr data-id="{{value.jobId}}">
+                <td>{{value.jobId}}</td>
+                <td>{{value.algName}}</td>
+                <td>{{value.para}}</td>
+                <td>{{value.submitDate}}</td>
+                <td>{{value.finishDate}}</td>
+                {{if value.status == 100}}
+                    <td>正在执行</td>
+                {{else if value.status == 200}}
+                    <td>执行成功</td>
+                {{else if value.status == 300}}
+                    <td>执行失败</td>
+                {{/if}}
+                <td><a href="javascript: void(0);" class="opt view">查看</a></td>
+            </tr>
+        {{/each}}
+    </script>
+    <script type="text/html" id="cluster-prop-tr">
+        {{each detail as value i}}
+            <tr>
+                <td><input type="checkbox" name="prop-check" class="cluster-prop-checkbox" data-id="{{value.id}}"></td>
+                <td>{{value.name}}</td>
+                <td>{{value.meaning}}</td>
+                <td>{{value.type}}</td>
+            </tr>
+        {{/each}}
+    </script>
+    <script type="text/html" id="page-menu">
+        {{if type == 'classify'}}
+            <div class="c-div-header">
+                分类分析向导
+            </div>
+            <div class="c-div-content">
+                <ul class="label-ul">
+                    <li class="active" id="menu-step1">训练集选择<i></i></li>
+                    <li id="menu-step2">训练模型属性<i></i></li>
+                    <li id="menu-step3">分类数据选择<i></i></li>
+                    <li id="menu-step4">结果确认<i></i></li>
+                </ul>
+            </div>
+        {{else if type == 'cluster'}}
             <div class="c-div-header">
                 聚类分析向导
             </div>
             <div class="c-div-content">
                 <ul class="label-ul">
-                    <li class="active">数据源选择<i></i></li>
-                    <li>聚类属性选择<i></i></li>
-                    <li>算法选择设置<i></i></li>
-                    <li>结果确认<i></i></li>
+                    <li class="active" id="menu-step1">数据源选择<i></i></li>
+                    <li id="menu-step2">聚类属性选择<i></i></li>
+                    <li id="menu-step3">算法选择设置<i></i></li>
+                    <li id="menu-step4">结果确认<i></i></li>
                 </ul>
             </div>
-        </div>
-        <div class="c-div-no-border" id="tabsInMining">
+        {{/if}}
+    </script>
+    <script type="text/html" id="page-content">
+        {{if type == 'classify'}}
+            <div class="c-div" id="step1">
+                <div class="c-div-header">
+                    训练集选择
+                </div>
+                <div>
+                    <select name="" id="data-source-list">
+                        <option value="">训练集选择</option>
+                    </select>
+                    <div class="button-group">
+                        <button class="btn btn-d-blue" data-val="1" data-type="list1" data-target="data-source-list" data-nextapi="getDMAlg" data-source="step2">下一步</button>
+                    </div>
+                </div>
+            </div>
+            <div class="c-div hidden" id="step2">
+                <div class="c-div-header">
+                    训练模型属性
+                </div>
+                <div>
+                   <div>
+                        <label for="">分类器选择：</label>
+                        <select name="" id="alg-select">
+                            <option value="">算法选择</option>
+                        </select>
+                    </div>
+                    <div id="alg-div">
+
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-d-blue" data-val="0" data-source="step1">上一步</button>
+                        <button class="btn btn-d-blue" data-val="1" data-type="get" data-nextapi="listAllSources" data-source="step3">下一步</button>
+                    </div>
+                </div>
+            </div>
+            <div class="c-div hidden" id="step3">
+                <div class="c-div-header">
+                    分类数据集选择
+                </div>
+                <div>
+                    <select name="" id="data-source-list2"  class="data-source-select">
+                        <option value="">分类数据集选择</option>
+                    </select>
+                    <div class="button-group">
+                        <button class="btn btn-d-blue" data-val="0" data-source="step2">上一步</button>
+                        <button class="btn btn-d-blue" data-val="1" data-type="list2" data-nextapi="submitDMJob" data-source="step4">下一步</button>
+                    </div>
+                </div>
+            </div>
+            <div class="c-div hidden" id="step4">
+                <div class="c-div-header">
+                    结果分析
+                </div>
+                <div >
+                    <div id="result-div"></div>
+                    <div class="button-group">
+                        <button class="btn btn-d-blue" data-val="0" data-source="step3">上一步</button>
+                    </div>
+                </div>
+            </div>
+        {{else if type == 'cluster'}}
             <div class="c-div" id="step1">
                 <div class="c-div-header">
                     数据源选择
                 </div>
                 <div>
-                    <select name="" id="data-source-list">
+                    <select name="" id="data-source-list" class="data-source-select">
                         <option value="">数据源选择</option>
                     </select>
                     <div class="button-group">
-                        <button class="btn btn-d-blue" data-val="1" data-source="step2">下一步</button>
+                        <button class="btn btn-d-blue" data-val="1" data-type="list1" data-target="data-source-list" data-nextapi="showDatas"  data-source="step2">下一步</button>
                     </div>
                 </div>
             </div>
@@ -53,10 +205,10 @@
                     聚类属性选择
                 </div>
                 <div>
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="cluster-prop-table">
                         <thead>
                             <tr>
-                                <td><input type="checkbox">选择</td>
+                                <td>选择</td>
                                 <td>字段名称</td>
                                 <td>字段含义</td>
                                 <td>数据类型</td>
@@ -68,7 +220,7 @@
                     </table>
                     <div class="button-group">
                         <button class="btn btn-d-blue" data-val="0" data-source="step1">上一步</button>
-                        <button class="btn btn-d-blue" data-val="1" data-source="step3">下一步</button>
+                        <button class="btn btn-d-blue" data-val="1" data-type="show" data-target="" data-nextapi="getDMAlg"  data-source="step3">下一步</button>
                     </div>
                 </div>
             </div>
@@ -79,21 +231,16 @@
                 <div>
                     <div>
                         <label for="">算法选择：</label>
-                        <select name="" id="">
+                        <select name="" id="alg-select">
                             <option value="">算法选择</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="">类别个数：</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label for="">迭代次数：</label>
-                        <input type="text">
+                    <div id="alg-div">
+
                     </div>
                     <div class="button-group">
                         <button class="btn btn-d-blue" data-val="0" data-source="step2">上一步</button>
-                        <button class="btn btn-d-blue" data-val="1" data-source="step4">下一步</button>
+                        <button class="btn btn-d-blue" data-val="1" data-type="get" data-nextapi="submitDMJob" data-source="step4">下一步</button>
                     </div>
                 </div>
             </div>
@@ -102,164 +249,28 @@
                     结果分析
                 </div>
                 <div>
-                    <table class="table table-striped" style="width: 200px;margin-top:20px;border: 1px solid #DDD">
-                        <thead>
-                            <tr>
-                                <td>类别</td>
-                                <td>记录数目</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>类别</td>
-                                <td>记录数目</td>
-                            </tr>
-                            <tr>
-                                <td>类别</td>
-                                <td>记录数目</td>
-                            </tr>
-                            <tr>
-                                <td>类别</td>
-                                <td>记录数目</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div id="result-div"></div>
                     <div class="button-group">
                         <button class="btn btn-d-blue" data-val="0" data-source="step3">上一步</button>
                     </div>
                 </div>
             </div>
-        </div>
-        
-    </div>
-    <script type="text/html" id="table-multi">
-        <div class="outline left">
-            <ul class="outline-ul">
-                <li>
-                    <label>数据记录条数：</label>
-                    <span>{{count}}</span>
-                </li>
-                <li>
-                    <label>总用户量：</label>
-                    <span>{{userCount}}</span>
-                </li>
-                <li>
-                    <label>下行流量(GB)：</label>
-                    <span>{{downFlow}}</span>
-                </li>
-                <li>
-                    <label>上行流量(GB)：</label>
-                    <span>{{upFlow}}</span>
-                </li>
-                <li>
-                    <label>人均流量消耗：</label>
-                    <span>{{avgFlow}}</span>
-                </li>
-            </ul>
-        </div>
-        <div class="outline right">
-            <ul class="outline-ul">
-                <li>
-                    <label>统计时长(天)：</label>
-                    <span>{{duringTime}}</span>
-                </li>
-                <li>
-                    <label>平均上网时长(h)：</label>
-                    <span>{{avgOnline}}</span>
-                </li>
-                <li>
-                    <label>下行包数：</label>
-                    <span>{{downPackage}}</span>
-                </li>
-                <li>
-                    <label>上行包数：</label>
-                    <span>{{upPackage}}</span>
-                </li>
-                <li>
-                    <label>人均包数：</label>
-                    <span>{{avgPackage}}</span>
-                </li>
-            </ul>
-        </div>
+        {{/if}}
     </script>
-    <script type="text/html">
-         <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>脱敏后的imsi</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>开始访问时间</td>
-            <td></td>
-        </tr><tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>结束访问时间</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>下行报文数</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>上行报文数</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>下行流量</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>上行流量</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>应用类型</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>应用</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>客户端名称</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>主机名</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>域名</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td>终端信息</td>
-            <td></td>
-        </tr>
+    <script type="text/html" id="alg-select-tmpl">
+        <option value=-1>请选择</option>
+        {{each Algs as value i}}
+            <option value="{{value.id}}">{{value.algname}}</option>
+        {{/each}}
+    </script>
+    <script type="text/html" id="alg-div-tmpl">
+        {{each data as value i}}
+            <div class="alg-single-div">
+                <label class="alg-para" for="" data-name="{{value.para}}">{{value.para}}</label>
+                <input class="alg-value" type="text">
+            </div>
+        {{/each}}
+        
     </script>
     <!--放在最下面，如要更改位置，请保持基本顺序不变-->
     <script src="../js/sea.js"></script>
@@ -273,7 +284,26 @@
         //这里更改接口路径 及相应的get/post方法
         seajs.use('../js/cluster.js', function(cluster){
             cluster.init({
-                
+                showDatas: {
+                    url: '../json/showDatas.json',
+                    type: 'get'
+                },
+                getDMAlg: {
+                    url: '../json/getDMAlg.json',
+                    type: 'get'
+                },
+                submitDMJob: {
+                    url: '../json/submitDMJob.json',
+                    type: 'get'
+                },
+                listDMJob: {
+                    url: '../json/listDMJob.json',
+                    type: 'get'
+                },
+                getDMJobRes: {
+                    url: '../json/getDMJobRes.json',
+                    type: 'get'
+                }
             });
         });
     </script>
