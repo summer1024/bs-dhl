@@ -5,6 +5,7 @@ define(function(require, exports, module){
     require('./dialog.js');
     require('./jquery.form.js');
     var menu = require('./menu.js');
+    var popup = require('./popup.js');
     //生成菜单 
     menu.init('data-source');
 
@@ -16,6 +17,7 @@ define(function(require, exports, module){
             me.bindUpload(opt);
             //操作按钮
             me.bindEvent(opt);
+            
         },
         initTable: function(item){
             var me = this;
@@ -72,6 +74,7 @@ define(function(require, exports, module){
                             if(res.status == 0){
                                 $el.parents('tr').find('td').eq(3).html("处理中");
                                 $el.text('处理中');
+                                popup('提交成功，后台处理中～');
                             }else{
                                 alert(res.messages);
                             }
@@ -105,7 +108,13 @@ define(function(require, exports, module){
                         dataType: 'json',
                         success: function(res){
                             if(res.status == 0){
-                                $.MsgBox.Alert('查看数据源',bt('view-source-table',res));
+
+                                $.MsgBox.Alert({
+                                    title: '查看数据源',
+                                    content: bt('view-source-table',res),
+                                    width: 900
+                                });
+
                                 $el.text('查看');
                                 $el.removeClass('loading');
                             }else{

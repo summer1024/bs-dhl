@@ -1,85 +1,101 @@
 define(function(require, exports, module){
+    require('../css/dialog.css');
     var $ = require('jquery');
+    var isResize;
     $.MsgBox = {
-        Alert: function (title, msg) {
-          GenerateHtml("alert", title, msg);
-          $("#mb_box").click(function () {
-          	$("#mb_box,#mb_con").remove();
-        	});
-          btnOk(); //alert只是弹出消息，因此没必要用到回调函数callback
-          btnNo();
+        Alert: function (opt) {
+            isResize = 0;
+            GenerateHtml("alert", opt);
+           //  $("#mb_box").click(function () {
+          	//    $("#mb_box,#mb_con").remove();
+        	  // });
+            btnOk(); //alert只是弹出消息，因此没必要用到回调函数callback
+            btnNo();
         },
-        Confirm: function (title, msg, callback) {
-          GenerateHtml("confirm", title, msg);
-          btnOk(callback);
-          btnNo();
+        Confirm: function (opt) {
+            isResize = 0;
+            GenerateHtml("confirm", opt);
+            btnOk(opt.callback || null);
+            btnNo();
         }
-      }
+    }
 
-      //生成Html
-      var GenerateHtml = function (type, title, msg) {
+    //生成Html
+    var GenerateHtml = function (type, opt) {
 
         var _html = "";
 
-        _html += '<div id="mb_box"></div><div id="mb_con"><span id="mb_tit">' + title + '</span>';
-        _html += '<a id="mb_ico">x</a><div id="mb_msg">' + msg + '</div><div id="mb_btnbox">';
+        _html += '<div id="mb_box"></div><div id="mb_con"><div class="ui-dialog-title"><span id="mb_tit">' + (opt.title || '系统信息') + '</span>';
+        _html += '<a class="close-btn" id="mb_ico">x</a></div><div id="mb_msg">' + (opt.content || '') + '</div><div id="mb_btnbox">';
 
         if (type == "alert") {
-          _html += '<input id="mb_btn_ok" type="button" value="确定" />';
-
+            _html += '<input id="mb_btn_ok" type="button" value="确定" />';
         }
         if (type == "confirm") {
-          _html += '<input id="mb_btn_ok" type="button" value="确定" />';
-          _html += '<input id="mb_btn_no" type="button" value="取消" />';
+            _html += '<input id="mb_btn_ok" type="button" value="确定" />';
+            _html += '<input id="mb_btn_no" type="button" value="取消" />';
         }
         _html += '</div></div>';
 
         //必须先将_html添加到body，再设置Css样式
-        $("body").append(_html); GenerateCss(type);
-      }
+        $("body").append(_html); GenerateCss(type, opt);
+    }
 
-      //生成Css
-      var GenerateCss = function (type) {
-     	if(type=='alert'){
-     		$("#mb_btn_ok").css({width:'100%',border:'none'});
-     	}
-        $("#mb_box").css({ width: '100%', height: '100%', zIndex: '99', position: 'fixed',
-          filter: 'Alpha(opacity=60)', backgroundColor: 'grey', top: '0', left: '0', opacity: '0.4'
+    //生成Css
+    var GenerateCss = function (type, opt) {
+        // 控制弹出框位置
+        setSize(opt);
+    }
+
+
+    //确定按钮事件
+    var btnOk = function (callback) {
+        $("#mb_btn_ok").click(function () {
+            if (typeof (callback) == 'function') {
+                callback();
+            }
+            $("#mb_box,#mb_con").remove();
+            window.onload = window.onresize = null;
         });
+    }
 
-
-        //右上角关闭按钮hover样式
-        $("#mb_ico").hover(function () {
-          $(this).css({ backgroundColor: 'Red', color: 'White' });
-        }, function () {
-          $(this).css({ backgroundColor: '#DDD', color: 'black' });
+    //取消按钮事件
+    var btnNo = function () {
+        $("#mb_btn_no,#mb_ico").click(function () {
+            $("#mb_box,#mb_con").remove();
+            window.onload = window.onresize = null
         });
+    }
 
-        var _widht = document.documentElement.clientWidth; //屏幕宽
+    function monitorSize(opt){
+        if(isResize === 0){
+
+            window.onload = window.onresize = function(){
+                setSize(opt);
+            };
+        }
+        
+    }
+    function setSize(opt){
+        var _width = document.documentElement.clientWidth; //屏幕宽
         var _height = document.documentElement.clientHeight; //屏幕高
 
-        var boxWidth = $("#mb_con").width();
+        var boxWidth = opt.width || 900;
         var boxHeight = $("#mb_con").height();
 
-        //让提示框居中
-        $("#mb_con").css({ top: (_height - boxHeight) / 2 + "px", left: (_widht - boxWidth) / 2 + "px" });
-      }
-
-
-      //确定按钮事件
-      var btnOk = function (callback) {
-        $("#mb_btn_ok").click(function () {
-          if (typeof (callback) == 'function') {
-            callback();
-          }
-          $("#mb_box,#mb_con").remove();
-        });
-      }
-
-      //取消按钮事件
-      var btnNo = function () {
-        $("#mb_btn_no,#mb_ico").click(function () {
-          $("#mb_box,#mb_con").remove();
-        });
-      }
+        if(_height < boxHeight){
+            $("#mb_con").css({ 
+                width: (opt.width || '900')+'px', 
+                top: "10px", 
+                left: (_width - boxWidth) / 2 + "px" 
+            });
+        }else{
+            $("#mb_con").css({ 
+                width: (opt.width || '900')+'px', 
+                top: (_height - boxHeight) / 2 + "px", 
+                left: (_width - boxWidth) / 2 + "px" 
+            });
+        }
+        monitorSize(opt);
+    }
 });

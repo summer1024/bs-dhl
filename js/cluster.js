@@ -14,6 +14,7 @@ define(function(require, exports, module){
     var menu = require('./menu.js');
     var list = require('./list');
     var type = getQueryString('type');
+    var popup = require('./popup.js');
     //生成菜单 
     menu.init(type);
     
@@ -54,7 +55,7 @@ define(function(require, exports, module){
                     data: data,
                     success: function(res){
                         if(res.status != 0){
-                            alert(res.message);
+                            popup(res.message);
                         }else{
                             $('#history-list-table').find('tbody').empty().append(bt('history-list-tmpl', res));
                         }
@@ -83,7 +84,7 @@ define(function(require, exports, module){
                                 $('.history-list-wp').removeClass('hide').addClass('hide');
                                 $('.history-detail-wp').removeClass('hide');
                             }else{
-                                alert(res.message);
+                                popup(res.message);
                             }
                         }
                     });
@@ -111,7 +112,7 @@ define(function(require, exports, module){
                             me.data.trainData = $('#data-source-list').val();
             				showNext();
             			}else{
-            				alert('请选择数据源');
+            				popup('请选择数据源');
             			}
             		}
                     else if(type === 'list2'){
@@ -119,13 +120,13 @@ define(function(require, exports, module){
                             me.data.testData = $('#data-source-list2').val();
                             showNext();
                         }else{
-                            alert('请选择数据源');
+                            popup('请选择数据源');
                         }
                     }
             		// 聚类属性选择验证
             		else if(type === 'show'){
                         if($("input[name='prop-check']:checked").length == 0){
-                            alert('请选择至少一个聚类属性');
+                            popup('请选择至少一个聚类属性');
                         }else{
                             $("input[name='prop-check']:checked").each(function(){
                                 me.data.columns.push($(this).data('id'));
@@ -136,7 +137,7 @@ define(function(require, exports, module){
             		// 算法选择设置验证 --- 第三步验证
             		else if(type === 'get'){
                         if($('#alg-select').val() == -1){
-                            alert('请选择算法');
+                            popup('请选择算法');
                         }else{
                             var isTextEmpty = false;
                             $('.alg-value').each(function(){
@@ -146,7 +147,7 @@ define(function(require, exports, module){
                                 }
                             });
                             if(isTextEmpty){
-                                alert('请将相关信息填写完整！');
+                                popup('请将相关信息填写完整！');
                             }else{
                                 me.data.paras = [];
                                 $('.alg-single-div').each(function(){
@@ -170,7 +171,7 @@ define(function(require, exports, module){
                             if(res.status == 0){
                                 $('#cluster-prop-table').find('tbody').empty().append(bt('cluster-prop-tr', res));
                             }else{
-                                alert(res.message);
+                                popup(res.message);
                             }
                         });
                     }else if(nextapi === 'getDMAlg'){
@@ -189,7 +190,7 @@ define(function(require, exports, module){
                                     });
                                 }
                             }else{
-                                alert(res.message);
+                                popup(res.message);
                             }
                         });
                     }else if(nextapi === 'submitDMJob'){
@@ -197,7 +198,7 @@ define(function(require, exports, module){
                             if(res.status == 0){
                                 $('#result-div').text('后台正在处理中，您本次任务的ID为' + res.jobId + '，后台处理需要一定时间，请届时前往历史记录中查看任务详细信息');
                             }else{
-                                alert(res.message);
+                                popup(res.message);
                             }
                         });
                     }

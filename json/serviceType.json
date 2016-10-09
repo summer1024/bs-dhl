@@ -1,0 +1,48 @@
+{
+    "status": 0,
+    "message": "",
+    "res": {
+        "flows": [
+            {
+                "type": "flow1",
+                "num": "998"
+            },
+            {
+                "type": "flow2",
+                "num": "747"
+            },
+            {
+                "type": "flow3",
+                "num": "75"
+            }
+        ],
+        "avgflows": [
+            {
+                "type": "avg1",
+                "num": "857"
+            },
+            {
+                "type": "avg2",
+                "num": "65"
+            },
+            {
+                "type": "avg3",
+                "num": "735"
+            }
+        ],
+        "usercount": [
+            {
+                "type": "count1",
+                "num": "37"
+            },
+            {
+                "type": "count2",
+                "num": "435"
+            },
+            {
+                "type": "count3",
+                "num": "25"
+            }
+        ]
+    }
+}

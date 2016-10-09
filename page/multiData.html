@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href=" ../css/img/favicon.ico" />
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/multiData.css">
 </head>
 <body>
     <div class="header clearfix">
@@ -19,22 +20,32 @@
     </div>
     <div class="main-content">
         <!--你们的内容写在这里-->
-        <h3>数据多级分析</h3>
+        <h3>
+            数据多级分析
+            <div class="data-select">
+                <select name="" id="data-source-list">
+                    <option value="">请选择</option>
+                </select>
+                <button class="btn btn-d-blue" id="exports-result">生成分析结果</button>
+            </div>
+            
+            
+        </h3>
         <hr>
         <div class="c-div">
             <div class="c-div-header">
                 总体概况
             </div>
             <div class="outline-wrapper clearfix">
-
+                <div class="result-none">请选择相应数据源</div>
             </div>
         </div>
         <div class="c-div">
             <div class="c-div-header">
                 时段分析
             </div>
-            <div class="canvas-content">
-
+            <div class="canvas-content" id="time-analysis">
+                <div class="result-none">请选择相应数据源</div>
             </div>
         </div>
         <div class="row col-wrapper">
@@ -43,8 +54,8 @@
                     <div class="c-div-header">
                         TOP10热门应用
                     </div>
-                    <div class="canvas-content">
-
+                    <div class="canvas-content" id="canvas-app">
+                        <div class="result-none">请选择相应数据源</div>
                     </div>
                 </div>
             </div>
@@ -53,8 +64,8 @@
                     <div class="c-div-header">
                         TOP10热门网站
                     </div>
-                    <div class="canvas-content">
-
+                    <div class="canvas-content" id="canvas-web">
+                        <div class="result-none">请选择相应数据源</div>
                     </div>
                 </div>
             </div>
@@ -63,10 +74,10 @@
             <div class="col-md-6 col-left-30">
                 <div class="c-div">
                     <div class="c-div-header">
-                        服务使用排行
+                        终端类型排行
                     </div>
-                    <div class="canvas-content">
-
+                    <div class="canvas-content" id="canvas-type">
+                        <div class="result-none">请选择相应数据源</div>
                     </div>
                 </div>
             </div>
@@ -123,6 +134,10 @@
         </div>
     </script>
     <!--放在最下面，如要更改位置，请保持基本顺序不变-->
+    <script src="../js/static/underscore.js"></script>
+    <script src="../js/static/d3.min.js"></script>
+    <script src="../js/static/echarts.min.js"></script>
+    <script src="../js/static/dvl.js"></script>
     <script src="../js/sea.js"></script>
     <script>
         seajs.config({
@@ -136,6 +151,22 @@
             multiData.init({
                 getSummary: {
                     url: '../json/getSummary.json',
+                    type: 'get'
+                },
+                perHourUser: {
+                    url: '../json/perHourUser.json',
+                    type: 'get'
+                },
+                serviceType: {
+                    url: '../json/serviceType.json',
+                    type: 'get'
+                },
+                topApp: {
+                    url: '../json/serviceType.json', 
+                    type: 'get'
+                },
+                topWeb: {
+                    url: '../json/topWeb.json',
                     type: 'get'
                 }
             });

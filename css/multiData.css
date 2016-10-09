@@ -1,0 +1,12 @@
+.data-select{
+    position: absolute;
+    top: 25px;
+    right: 20px;
+}
+.result-none{
+    color: grey;
+    height: 300px;
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+}
