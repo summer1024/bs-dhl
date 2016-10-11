@@ -10,3 +10,5 @@
 	* 添加文件js/traffic.js,js/hotspot.js
 	* 更改文件page/traffic.html, page/hotspot.html
 	* 本次主要更改内容：没有更改之前的页面，只是添加最后两个页面的静态展示。
+	
+	* add: 更改MENU，去掉【热点分析】菜单项
