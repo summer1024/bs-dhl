@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAD移动互联网用户行为分析系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href=" ../css/img/favicon.ico" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/multiData.css">
+</head>
+<body>
+    <div class="header clearfix">
+        <div class="logo"></div>
+        <!--标题写这里-->
+        <h1>CAD移动互联网用户行为分析系统</h1>
+    </div>
+    <div class="menu-wrapper">
+        
+    </div>
+    <div class="main-content">
+        <!--你们的内容写在这里-->
+        <h3>
+            用户访问热点分析
+            <div class="data-select">
+                <select name="" id="data-source-list">
+                    <option value="">请选择</option>
+                </select>
+                <button class="btn btn-d-blue" id="exports-result">生成分析结果</button>
+            </div>
+            
+            
+        </h3>
+        <hr>
+        <div class="row col-wrapper">
+            <div class="col-md-6 col-left-30">
+                <div class="c-div">
+                    <div class="c-div-header">
+                        热门词汇排行
+                    </div>
+                    <div class="canvas-content" id="canvas-app">
+                        <div class="result-none">请选择相应数据源</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-left-30">
+                <div class="c-div">
+                    <div class="c-div-header">
+                        热点趋势分析
+                    </div>
+                    <div class="canvas-content" id="canvas-web">
+                        <div class="result-none">请选择相应数据源</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row col-wrapper">
+            <div class="col-md-6 col-left-30">
+                <div class="c-div">
+                    <div class="c-div-header">
+                        用户偏好
+                    </div>
+                    <div class="canvas-content" id="canvas-type">
+                        <div class="result-none">请选择相应数据源</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--放在最下面，如要更改位置，请保持基本顺序不变-->
+    <script src="../js/static/underscore.js"></script>
+    <script src="../js/static/d3.min.js"></script>
+    <script src="../js/static/echarts.min.js"></script>
+    <script src="../js/static/dvl.js"></script>
+    <script src="../js/sea.js"></script>
+    <script>
+        seajs.config({
+            alias: {
+                "jquery": "./jquery.min.js",
+                "bootstrap": "./bootstrap.min.js"
+            }
+        });
+        //这里更改接口路径 及相应的get/post方法
+        seajs.use('../js/hotspot.js', function(multiData){
+            multiData.init({});
+        });
+    </script>
+</body>
+</html>
