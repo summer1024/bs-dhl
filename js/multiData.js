@@ -107,7 +107,9 @@ define(function(require, exports, module){
             var api = options.serviceType.url;
             var apiType = options.serviceType.type;
             var params = {id: id};
-            var container = '#canvas-type';
+            var container1 = '#canvas-type1';
+            var container2 = '#canvas-type2';
+            var container3 = '#canvas-type3';
 
             $.ajax({
                 url: api,
@@ -134,22 +136,48 @@ define(function(require, exports, module){
                         return tmp;
                     });
 
-                    var sourceData = {//多对象对应不同属性的情况
-                        "viewId": viewId,
+                    var sourceData1 = {//多对象对应不同属性的情况
+                        "viewId": viewId + 'type1',
                         "describe": "终端类型排行",
                         "title": "终端类型排行",
-                        "objects": ["总流量", "人均流量", "用户数量"],
+                        "objects": ["总流量"],
                         "property": [
                                     ['属性','属性值']
                                  ],
                         "relationtype":2,
                         "relations":{
-                            "总流量": flows,
-                            "人均流量": avgflows,
+                            "总流量": flows
+                        }
+                    };
+                    var sourceData2 = {//多对象对应不同属性的情况
+                        "viewId": viewId + 'type2',
+                        "describe": "终端类型排行",
+                        "title": "终端类型排行",
+                        "objects": ["人均流量"],
+                        "property": [
+                                    ['属性','属性值']
+                                 ],
+                        "relationtype":2,
+                        "relations":{
+                            "人均流量": avgflows
+                        }
+                    };
+                    var sourceData3 = {//多对象对应不同属性的情况
+                        "viewId": viewId + 'type3',
+                        "describe": "终端类型排行",
+                        "title": "终端类型排行",
+                        "objects": ["用户数量"],
+                        "property": [
+                                    ['属性','属性值']
+                                 ],
+                        "relationtype":2,
+                        "relations":{
                             "用户数量": usercount
                         }
-                    }
-                    DVL(container, sourceData, 10, false);
+                    };
+                    DVL(container1, sourceData1, 10, false);
+                    DVL(container2, sourceData2, 10, false);
+                    DVL(container3, sourceData3, 10, false);
                 }else{
                     popup(res.message);
                 }
@@ -201,7 +229,9 @@ define(function(require, exports, module){
             var api = options.topApp.url;
             var apiType = options.topApp.type;
             var params = {id: id};
-            var container = '#canvas-app';
+            var container1 = '#canvas-app1';
+            var container2 = '#canvas-app2';
+            var container3 = '#canvas-app3';
 
             $.ajax({
                 url: api,
@@ -228,22 +258,48 @@ define(function(require, exports, module){
                         return tmp;
                     });
 
-                    var sourceData = {//多对象对应不同属性的情况
-                        "viewId": viewId,
+                    var sourceData1 = {//多对象对应不同属性的情况
+                        "viewId": viewId + '-app1',
                         "describe": "移动应用排行榜",
                         "title": "移动应用排行榜",
-                        "objects": ["总流量", "人均流量", "用户数量"],
+                        "objects": ["总流量"],
                         "property": [
                                     ['属性','属性值']
                                  ],
                         "relationtype":2,
                         "relations":{
-                            "总流量": flows,
-                            "人均流量": avgflows,
+                            "总流量": flows
+                        }
+                    };
+                    var sourceData2 = {//多对象对应不同属性的情况
+                        "viewId": viewId + '-app2',
+                        "describe": "移动应用排行榜",
+                        "title": "移动应用排行榜",
+                        "objects": [ "人均流量"],
+                        "property": [
+                                    ['属性','属性值']
+                                 ],
+                        "relationtype":2,
+                        "relations":{
+                            "人均流量": avgflows
+                        }
+                    };
+                    var sourceData3 = {//多对象对应不同属性的情况
+                        "viewId": viewId + '-app3',
+                        "describe": "移动应用排行榜",
+                        "title": "移动应用排行榜",
+                        "objects": ["用户数量"],
+                        "property": [
+                                    ['属性','属性值']
+                                 ],
+                        "relationtype":2,
+                        "relations":{
                             "用户数量": usercount
                         }
-                    }
-                    DVL(container, sourceData, 10, false);
+                    };
+                    DVL(container1, sourceData1, 10, false);
+                    DVL(container2, sourceData2, 10, false);
+                    DVL(container3, sourceData3, 10, false);
                 }else{
                     popup(res.message);
                 }

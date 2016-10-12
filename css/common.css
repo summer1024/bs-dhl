@@ -2,3 +2,25 @@ html{min-height:100%;position:relative}body{font-family:"Microsoft YaHei",arial,
 .view-area-box{
     height: 400px;
 }
+.line{
+    *zoom: 1;
+}
+.line::after, .line::before{
+    display: table;
+    content: "";
+}
+.line::after{
+    clear: both;
+}
+.grid{
+    display: inline;
+    float: left;
+}
+.dv-3{
+    width: 33.33%;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.dv-3-wp{
+    margin-right: -10px;
+}
